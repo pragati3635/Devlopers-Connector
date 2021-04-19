@@ -1,16 +1,17 @@
 pipeline {
     agent any
+    tools { nodejs "node"}
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
                 echo 'building the application..'
-                bat 'npm run dev'
-                
+                bat 'npm --version'
             }
         }
         stage('test'){
             steps {
                 echo 'testing the application..'
+                bat 'npm install --only=dev'
             }
         }
         stage('deploy'){
