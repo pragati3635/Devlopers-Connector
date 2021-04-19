@@ -4,20 +4,32 @@
   "description": "social network website for developers",
   "main": "server.js",
   "scripts": {
-    "start" : "node server",
-    "server" : "nodemon server"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Pragati Sinha",
   "license": "MIT",
   "dependencies": {
+    "autoprefixer": "^10.2.5",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.6.0",
     "config": "^3.3.3",
+    "css-loader": "^5.1.3",
     "express": "^4.17.1",
     "express-validator": "^6.9.2",
     "gravatar": "^1.8.1",
+    "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.17",
-    "request": "^2.88.2"
+    "popper.js": "^1.16.1",
+    "postcss-loader": "^5.2.0",
+    "precss": "^4.0.0",
+    "react-bootstrap": "^1.5.2",
+    "request": "^2.88.2",
+    "sass-loader": "^11.0.1",
+    "style-loader": "^2.0.0"
   },
   "devDependencies": {
     "concurrently": "^6.0.0",
