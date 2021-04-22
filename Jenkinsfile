@@ -7,7 +7,7 @@ pipeline {
                 echo 'building the application..'
                 bat 'npm --version'
                 retry(4){
-                    bat 'npm run dev'
+                    bat 'npm run server'
                 }
             }
         }
