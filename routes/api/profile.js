@@ -59,13 +59,63 @@ async ( req , res ) => {
     if(bio){
         profileFields.bio = bio;
     }
-    if(status){
-        profileFields.status = status;
-    }
+    profileFields.status = status;
     if(gihubusername){
         profileFields.gihubusername = gihubusername;
     }
+    profileFields.skills = skills.split(',').map(skill => skill.trim());
+
+    // Build Social Object
+    profileFields.social = {};
+
+    if(youtube){
+        profileFields.social.youtube = youtube;
+    }
+    if(facebook){
+        profileFields.social.facebook = facebook;
+    }
+    if(twitter){
+        profileFields.social.twitter = twitter;
+    }
+    if(instagram){
+        profileFields.social.instagram = instagram;
+    }
+    if(Linkedin){
+        profileFields.social.Linkedin = Linkedin;
+    }
+
+    try {
+        let profile = await Profile.findOne( { user : req.user.id } );
+        if(profile) {
+            profile = await Profile.findOneAndUpdate( 
+                { user : req.user.id }, 
+                { $set : profileFields } ,
+                { new : true }
+            );
+            return res.json(profile);
+        }
+         // Create
+        profile = new Profile( profileFields );
+        await profile.save();
+        return res.json(profile);
+
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
     
+});
+
+// @route GET api/profile
+// @desc get all profile
+// access Public
+router.get('/', async ( req , res ) => {
+    try{
+        //const profies = await Profile.f
+    } catch(err){
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
 });
 
 module.exports = router ;
