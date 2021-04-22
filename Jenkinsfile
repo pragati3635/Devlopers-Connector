@@ -14,7 +14,7 @@ pipeline {
         stage('test'){
             steps {
                 echo 'testing the application..'
-                bat './jenkins/scripts/test.sh'
+                bat './test.sh'
             }
         }
         stage('deploy'){
