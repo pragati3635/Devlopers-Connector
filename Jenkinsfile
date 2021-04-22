@@ -29,6 +29,9 @@ pipeline {
          failure {
              echo 'Failures !!'
          }
+         always {
+             junit 'build/reports/**/*.xml'
+         }
      }
  }
 
