@@ -11,15 +11,12 @@ pipeline {
                 bat 'npm --version'
             }
         }
-        stage('test'){
-            steps {
-                echo 'testing the application..'
-                sh './test.sh'
-            }
-        }
-        stage('deploy'){
+        stage('deliver'){
             steps {
                 echo 'deploying the application..'
+                sh './deliver.sh'
+                input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                sh './kill.sh'
             }
         }
     }
