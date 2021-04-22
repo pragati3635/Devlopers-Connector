@@ -6,6 +6,7 @@ pipeline {
             steps {
                 echo 'building the application..'
                 bat 'npm --version'
+                bat 'npm install'
                 retry(4){
                     bat 'npm run server'
                 }
