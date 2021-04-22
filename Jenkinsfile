@@ -12,7 +12,7 @@ pipeline {
             }
             post {
                 success {
-                    archiveArtifacts 'target/*.hpi,target/*.jpi'
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             }
             post {
                 always {
-                    junit '**/surefire-reports/**/*.xml'
+                    junit 'build/reports/**/*.xml'
                 }
             }
         }
