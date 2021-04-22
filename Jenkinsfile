@@ -14,7 +14,6 @@ pipeline {
         stage('test'){
             steps {
                 echo 'testing the application..'
-                bat 'cd client'
                 bat './models/test.sh'
             }
         }
