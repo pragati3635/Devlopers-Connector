@@ -16,6 +16,11 @@ pipeline {
                 echo 'testing the application..'
             }
         }
+        stage('deliver'){
+            steps {
+                echo 'delivering the appication..'
+            }
+        }
      }
      post {
          success {
