@@ -10,10 +10,20 @@ pipeline {
                 echo 'building the application..'
                 bat 'npm --version'
             }
+            post {
+                success {
+                    archiveArtifacts 'target/*.hpi,target/*.jpi'
+                }
+            }
         }
         stage('test'){
             steps {
                 echo 'testing the application..'
+            }
+            post {
+                always {
+                    junit '**/surefire-reports/**/*.xml'
+                }
             }
         }
         stage('deliver'){
@@ -28,9 +38,6 @@ pipeline {
          }
          failure {
              echo 'Failures !!'
-         }
-         always {
-             junit 'build/reports/**/*.xml'
          }
      }
  }
