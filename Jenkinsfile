@@ -16,10 +16,11 @@ pipeline {
                 echo 'testing the application..'
             }
         }
-        post {
-           success {
-                echo 'This will run only if successful'
-           }
-       }
-    }
-}
+     }
+     post {
+         success {
+             echo 'This will run only if successful'
+         }
+     }
+ }
+
