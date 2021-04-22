@@ -16,11 +16,6 @@ pipeline {
                 echo 'testing the application..'
             }
         }
-        stage('deliver'){
-            steps {
-                echo 'deploying the application...'
-            }
-        }
         post {
            always {
                 echo 'This will always run'
