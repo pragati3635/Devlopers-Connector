@@ -14,9 +14,9 @@ pipeline {
         stage('deliver'){
             steps {
                 echo 'deploying the application..'
-                sh './deliver.sh'
+                sh './jenkins/scripts/deliver.sh'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './kill.sh'
+                sh './jenkins/scripts/kill.sh'
             }
         }
     }
