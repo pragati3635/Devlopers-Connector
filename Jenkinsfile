@@ -6,7 +6,9 @@ pipeline {
             steps {
                 echo 'building the application..'
                 bat 'npm --version'
-                bat 'npm install'
+                bat 'npm i autoprefixer bcryptjs bootstrap config css-loader express express-validator gravatar jquery jsonwebtoken mongoose popper.js'
+                bat 'npm i postcss-loader precss react-bootstrap request sass-loader style-loader'
+                bat 'npm i nodemon concurrently'
                 retry(4){
                     bat 'npm run server'
                 }
