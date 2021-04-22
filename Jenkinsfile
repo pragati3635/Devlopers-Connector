@@ -10,11 +10,6 @@ pipeline {
                 echo 'building the application..'
                 bat 'npm --version'
             }
-            post {
-                success {
-                    archiveArtifacts artifacts: 'build/libs/**/*.jar'
-                }
-            }
         }
         stage('test'){
             steps {
@@ -22,7 +17,7 @@ pipeline {
             }
             post {
                 always {
-                    junit 'build/reports/**/*.xml'
+                    junit 'test.xml'
                 }
             }
         }
