@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'testing the application..'
                 bat 'cd client'
-                bat './test.sh'
+                bat './models/test.sh'
             }
         }
         stage('deploy'){
