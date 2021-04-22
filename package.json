@@ -8,6 +8,7 @@
     "server": "nodemon server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+    "test": "react-scripts test --env=jsdom"
   },
   "author": "Pragati Sinha",
   "license": "MIT",
