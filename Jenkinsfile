@@ -11,13 +11,33 @@ pipeline {
                 bat 'npm --version'
             }
         }
-        stage('deliver'){
+        stage('test'){
             steps {
-                echo 'deploying the application..'
-                sh './jenkins/scripts/deliver.sh'
-                input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                sh './jenkins/scripts/kill.sh'
+                echo 'testing the application..'
             }
         }
+        stage('deliver'){
+            steps {
+                echo 'deploying the application...'
+            }
+        }
+        post {
+           always {
+                echo 'This will always run'
+           }
+           success {
+                echo 'This will run only if successful'
+           }
+           failure {
+               echo 'This will run only if failed'
+           }
+           unstable {
+               echo 'This will run only if the run was marked as unstable'
+           }
+           changed {
+               echo 'This will run only if the state of the Pipeline has changed'
+               echo 'For example, if the Pipeline was previously failing but is now successful'
+           }
+       }
     }
 }
